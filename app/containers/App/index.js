@@ -16,6 +16,8 @@ import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
+import Newsletter from 'components/Widgets/Newsletter';
+import ZipCodeValidator from 'components/Widgets/ZipCodeValidator';
 
 const AppWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
@@ -41,6 +43,8 @@ export default function App() {
         <Route path="/features" component={FeaturePage} />
         <Route path="" component={NotFoundPage} />
       </Switch>
+      <Newsletter />
+      <ZipCodeValidator />
       <Footer />
     </AppWrapper>
   );

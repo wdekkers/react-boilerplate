@@ -1,0 +1,9 @@
+@import '../../styles/styles.css';
+
+.TopBar{
+    background: var(--color-black);
+    color: var(--color-white);
+}
+.TopBar a{
+    color: var(--color-white);
+}

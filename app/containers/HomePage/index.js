@@ -32,6 +32,7 @@ import { changeUsername } from './actions';
 import { makeSelectUsername } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import './home.css';
 
 /* eslint-disable react/prefer-stateless-function */
 export class HomePage extends React.PureComponent {
@@ -70,7 +71,8 @@ export class HomePage extends React.PureComponent {
               <FormattedMessage {...messages.startProjectMessage} />
             </p>
           </CenteredSection>
-          <Section>
+
+          <Section className="home">
             <H2>
               <FormattedMessage {...messages.trymeHeader} />
             </H2>

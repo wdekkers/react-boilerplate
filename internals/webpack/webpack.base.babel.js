@@ -10,7 +10,7 @@ const webpack = require('webpack');
 // see https://github.com/webpack/loader-utils/issues/56 parseQuery() will be replaced with getOptions()
 // in the next major version of loader-utils.'
 process.noDeprecation = true;
-
+const context = path.resolve(__dirname, 'app');
 module.exports = options => ({
   mode: options.mode,
   entry: options.entry,
@@ -25,6 +25,30 @@ module.exports = options => ({
   optimization: options.optimization,
   module: {
     rules: [
+      {
+        include: context,
+        loaders: [
+          'style-loader',
+          'css-loader?importLoader=1&modules&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+        ],
+        test: /\.css$/,
+      },
+      {
+        include: context,
+        loader: '@babel/loader',
+        query: {
+          plugins: [
+            'transform-react-jsx',
+            [
+              'react-css-modules',
+              {
+                context,
+              },
+            ],
+          ],
+        },
+        test: /\.js$/,
+      },
       {
         test: /\.js$/, // Transform all .js files required somewhere with Babel
         exclude: /node_modules/,
